@@ -1,0 +1,6 @@
+[
+  { "id": 1, "name": "Sepatu", "nominal": 100000, "date": "2023-03-20" },
+  { "id": 2, "name": "Baju", "nominal": 150000, "date": "2023-03-20" },
+  { "id": 3, "name": "Celana", "nominal": 200000, "date": "2023-03-20" },
+  { "id": 4, "name": "Topi", "nominal": 200000, "date": "2023-03-20" }
+]

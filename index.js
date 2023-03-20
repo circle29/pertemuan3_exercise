@@ -29,4 +29,11 @@ app.post("/", (req, res) => {
   res.status(200).send("Data Added Success");
 });
 
+app.delete("/:id", (req, res) => {
+  const result = filteredResult.filter((item) => req.params.id != item.id);
+  fs.writeFileSync("./data/expense.json", JSON.stringify(result));
+
+  res.status(200).send(`ID ${req.params.id} Deleted`);
+});
+
 app.listen(PORT, () => console.log("Server running :", PORT));

@@ -36,4 +36,14 @@ app.delete("/:id", (req, res) => {
   res.status(200).send(`ID ${req.params.id} Deleted`);
 });
 
+app.patch("/:id", (req, res) => {
+  const indexAt = filteredResult.findIndex((data) => data.id == req.params.id);
+
+  filteredResult[indexAt] = { ...filteredResult[indexAt], ...req.body };
+
+  fs.writeFileSync("./data/expense.json", JSON.stringify(filteredResult));
+
+  res.status(200).send("Data Updated");
+});
+
 app.listen(PORT, () => console.log("Server running :", PORT));

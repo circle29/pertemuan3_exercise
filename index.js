@@ -12,14 +12,40 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let filteredResult = JSON.parse(fs.readFileSync("./data/expense.json"));
 console.log(filteredResult);
 
-app.get("/", (req, res) => {
-  res.status(200).send(filteredResult);
-});
-
 app.get("/:id", (req, res) => {
   const result = filteredResult.filter((item) => req.params.id == item.id);
   //   console.log(req.params.id);
   res.status(200).send(result);
+});
+
+app.get("/", (req, res) => {
+  const requestQuery = Object.keys(req.query);
+
+  if (!requestQuery.length) {
+    res.status(200).send(filteredResult);
+  } else if (requestQuery.includes("category")) {
+    res
+      .status(200)
+      .send(
+        filteredResult.filter((data) => data.category == req.query.category)
+      );
+  } else if (
+    requestQuery.includes("date-start") &&
+    requestQuery.includes("date-end")
+  ) {
+    const dateStart = new Date(req.query["date-start"]);
+    const dateEnd = new Date(req.query["date-end"]);
+    res
+      .status(200)
+      .send(
+        filteredResult.filter(
+          (data) =>
+            new Date(data.date) >= dateStart && new Date(data.date) <= dateEnd
+        )
+      );
+  }
+  //   console.log(req.query);
+  res.status(200).send(filteredResult);
 });
 
 app.post("/", (req, res) => {

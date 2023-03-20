@@ -1,1 +1,23 @@
-[{"id":1,"name":"Sepatu","nominal":100000,"date":"2023-03-20"},{"id":2,"name":"Baju","nominal":150000,"date":"2023-03-20"},{"id":3,"name":"Celana","nominal":220000,"date":"2023-03-20"}]
+[
+  {
+    "category": "pakaian",
+    "id": 1,
+    "name": "Sepatu",
+    "nominal": 100000,
+    "date": "2023-03-20"
+  },
+  {
+    "category": "electronic",
+    "id": 2,
+    "name": "komputer",
+    "nominal": 150000,
+    "date": "2023-04-20"
+  },
+  {
+    "category": "etc",
+    "id": 3,
+    "name": "pulsa",
+    "nominal": 220000,
+    "date": "2023-05-20"
+  }
+]
